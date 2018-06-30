@@ -8,6 +8,7 @@ import authRouter from './auth/router.js';
 
 import errorHandler from './middleware/error.js';
 import notFound from './middleware/404.js';
+import badRequest from './middleware/400';
 
 let app = express();
 
@@ -18,6 +19,7 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(authRouter);
 
+app.use(badRequest);
 app.use(notFound);
 app.use(errorHandler);
 
@@ -42,4 +44,5 @@ module.exports = {
       console.log('Server has stopped');
     });
   },
+  server: app,
 };
