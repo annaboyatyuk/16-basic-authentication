@@ -2,7 +2,7 @@
 
 import User from './model.js';
 
-export default (req, res, nex) => {
+export default (req, res, next) => {
   let authenticate = (auth) => {
 
     User.authenticate(auth)
@@ -31,6 +31,7 @@ export default (req, res, nex) => {
   try {
     let auth = {};
     let authHeader = req.headers.authorization;
+    
 
     if(!authHeader) {
       return getAuth();
